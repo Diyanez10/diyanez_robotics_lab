@@ -1,0 +1,33 @@
+sudo apt update
+sudo apt update
+sudo apt upgrade
+gedit .bashrc
+sudo apt install python3-colcon-common-extensions
+cd /usr/share/colcon_argcomplete/hook
+gedit .bashrc
+source .bashrc
+mkdir ros2_ws
+mkdir batch2
+mkdir ros2_ws
+mkdir src
+colcon build
+ros2 pkg create robot_controller_sept_3_dk --build-type ament_python --dependencies rclpy
+cd robot_controller_sept_3_dk/
+sudo snap install code --classic
+cd batch2
+cd ros2_ws/
+cd src
+cd robot_controller_sept_3_dk/
+code .
+git --version
+git clone https://github.com/Diyanez10/diyanez_robotics_lab.git
+git status
+git init
+git add .
+colcon build
+ cd install
+ cd src/robot_controller_sept_3_dk/robot_controller_sept_3_dk/
+ touch my_first_node.py
+ python3 my_first_node.py
+ chmod mod +x my_first_node.py
+ ./my_first_node.py
