@@ -25,9 +25,31 @@ git status
 git init
 git add .
 colcon build
- cd install
- cd src/robot_controller_sept_3_dk/robot_controller_sept_3_dk/
- touch my_first_node.py
- python3 my_first_node.py
- chmod mod +x my_first_node.py
- ./my_first_node.py
+cd install
+cd src/robot_controller_sept_3_dk/robot_controller_sept_3_dk/
+touch my_first_node.py
+python3 my_first_node.py
+chmod mod +x my_first_node.py
+./my_first_node.py
+~/batch2/ros2_ws/src$ ros2 run robot_controller_sept_3_dk Test_node
+edit in node file "my_first_node:"
+edit in xml file to create an executable file "'console_scripts': [
+           "Test_node = robot_controller_sept_3_dk.my_first_node:main"
+       ],
+if your node needs to be run like a ros node and not like a python node , it should be in the setup.py in the package.
+After editting a node , you should come to the ros2_ws folder and to colcon build and source ~/.bashrc.
+Dont forget to include ~/batch2/ros2_ws/install/setup.bash in the /.bashrc file .
+ros2 run turtlesim turtlesim_node -> opens the turtlesim window
+ros2 run turtlesim turtle_teleop_key -> control the turtlr in the turtlesim node
+rqt_graph -> shows all the nodes and topics that are currently active in the window
+ros2 topic list -> lists out all the topics that are active
+ros2 topic info /turtle1/cmd_vel -> shows info on that topic
+ros2 interface show geometry_msgs/msg/Twist -> opens the message type given in the info
+
+self.create_publisher -> creates a create_publisher(Twist, "/turtle1/cmd_vel", 10) 10 indicates max 10 messages.
+self.create_timer(4.0, self.callback_function) -> creates a timer and calls the callback_function for every 4 seconds.
+self.get_logger().info("message") -> prints the message for every second mentioned in the timer.
+
+If u create a new node , you have to do colcon build --symlink again and do source ~/.bashrc , after that u can run the node.
+If there is any new dependencies used in the node , you have to add it in the depend in package.xml
+And u add a executable name in the setup.py
